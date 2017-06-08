@@ -14,4 +14,8 @@ fi
 
 htpasswd -bBc /etc/nginx/.htpasswd $BASIC_AUTH_USERNAME $BASIC_AUTH_PASSWORD
 
+sed \
+  -e "s|##PROXY_PASS##|$PROXY_PASS|g" \
+  /etc/nginx/conf.d/default.conf > /etc/nginx/conf.d/default.conf
+
 nginx -g "daemon off;"
